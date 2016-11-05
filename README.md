@@ -1,11 +1,12 @@
 # 模仿知乎界面的一个简单React demo
 
-地址：http://blog.xieliqun.com/2016/10/06/scope-chain-2/
+博客地址：http://blog.xieliqun.com/2016/11/04/react-zhihu/
+
+
 
 > 这是一个模仿知乎界面的简单React demo。这个React demo能让你从零开始学习React，并逐渐掌握React。
 
 
-----------
 
 ## 搭建开发环境
 
