@@ -70,7 +70,7 @@ bower install --save bootstrap
 
 ## 部署生产
 
-请切换分支到 gulp-git 分支
+请切换分支到 product 分支
 
 ### 修改gulpfile文件
 ```javascript
@@ -100,6 +100,14 @@ gulp.task('build',['browserify','copy']);
 
 //添加启动生产服务器任务
 gulp.task('server-pro',['build','connect-pro','watch']);
+```
+
+### 修改index.html引用目录
+```javascript
+<link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="./css/index.css">
+
+<script src="./js/main.js"></script>
 ```
 
 ## 后续
