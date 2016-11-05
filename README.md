@@ -68,6 +68,40 @@ bower install --save bootstrap
 - 学会如何在组件之间通信
 - 注意写作规范和开发细节
 
+## 部署生产
+
+请切换分支到 gulp-git 分支
+
+### 修改gulpfile文件
+```javascript
+//添加copy任务
+gulp.task('copy',function(){
+    gulp.src('./app/css/*')
+    .pipe(gulp.dest('./dist/css'));
+
+    gulp.src('./bower_components/**/*')
+    .pipe(gulp.dest('./dist/libs'));
+
+    gulp.src('./*.html')
+    .pipe(gulp.dest('./dist'));
+});
+
+//生产服务器
+gulp.task('connect-pro',function(){
+    connect.server({
+        root:'./dist',
+        port:port,
+        livereload:true,
+    })
+});
+
+//添加build任务
+gulp.task('build',['browserify','copy']);
+
+//添加启动生产服务器任务
+gulp.task('server-pro',['build','connect-pro','watch']);
+```
+
 ## 后续
 
 将在分支中更新使用下列技术的版本
