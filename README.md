@@ -6,6 +6,17 @@
 
 > 这是一个模仿知乎界面的简单React demo。这个React demo能让你从零开始学习React，并逐渐掌握React。
 
+** 项目运行 **
+```javascript
+$ git clone https://github.com/tsrot/react-zhihu.git
+$ cd react-zhihu
+
+$ npm install
+
+$ bower install
+
+$ gulp server   //用浏览器打开 localhost:5000
+```
 
 
 ## 搭建开发环境
