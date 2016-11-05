@@ -1,0 +1,21 @@
+{
+  "name": "react-zhihu",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "tsrot <me@xieliqun.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
