@@ -110,6 +110,22 @@ gulp.task('server-pro',['build','connect-pro','watch']);
 <script src="./js/main.js"></script>
 ```
 
+### 使用gulp-gh-pages部署到github pages
+
+下载gulp-gh-pages插件
+```javascript
+npm install --save-dev gulp-gh-pages
+```
+在gulpfile文件中添加配置gulp-gh-pages代码
+```javascript
+var ghPages = require('gulp-gh-pages');
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
+```
+
 ## 后续
 
 将在分支中更新使用下列技术的版本
