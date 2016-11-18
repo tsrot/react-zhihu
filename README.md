@@ -126,9 +126,26 @@ gulp.task('deploy', function() {
 });
 ```
 
+## webpack + es6 ([webpack分支](https://github.com/tsrot/react-zhihu/tree/webpack))
+
+1、手动删除bower_components，统一使用npm，这样有利于后面webpack的配置。
+把bootstrap安装到node_modules:
+```javascript
+$ npm install --save bootstrap
+```
+2、安装webpack-stream、vinyl-named、gulp-clean
+```javascript
+$ npm install --save-dev webpack-stream vinyl-named gulp-clean
+```
+3、安装plugin和webpack loader
+```javascript
+$ npm install --save-dev html-webpack-plugin extract-text-webpack-plugin babel-core babel-loader babel-preset-es2015 babel-preset-react style-loader css-loader postcss-loader autoprefixer file-loader
+```
+4、配饰gulp和webpack
+
 ## 后续
 
 将在分支中更新使用下列技术的版本
-- webpack + es6
-- webpack + es6 + redux
+- webpack + es6 : [webpack分支](https://github.com/tsrot/react-zhihu/tree/webpack)
+- webpack + es6 + redux 
 - webkack + es6 + redux + react-router
