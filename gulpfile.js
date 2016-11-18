@@ -1,17 +1,11 @@
 var gulp = require('gulp'),
 	connect = require('gulp-connect'),
-	browserify = require('gulp-browserify'),
-	concat = require('gulp-concat'),
+	webpack = require('webpack-stream'),
+	named = require('vinyl-named'),
+	clean = require('gulp-clean'),
+	webpackConfig = require('./webpack.config.js'),
 
 	port = process.env.port || 5000 ;
-
-	gulp.task('browserify',function(){
-		gulp.src('./app/js/main.js')
-		.pipe(browserify({
-			transform:'reactify',
-		}))
-		.pipe(gulp.dest('./dist/js'))
-	});
 
 	gulp.task('connect',function(){
 		connect.server({
@@ -39,6 +33,11 @@ var gulp = require('gulp'),
 		.pipe(connect.reload())
 	});
 
+	gulp.task('clean',function(){
+		return gulp.src('dist/**/*')
+		.pipe(clean({force:true}));
+	});
+
 	gulp.task('copy',function(){
 		gulp.src('./app/css/*')
 		.pipe(gulp.dest('./dist/css'));
@@ -56,10 +55,17 @@ var gulp = require('gulp'),
 		gulp.watch('./app/**/*.js',['browserify']);
 	});
 
+	gulp.task('webpack',['clean'],function(){
+		return gulp.src('./app/js/*.js')
+		.pipe(named())
+		.pipe(webpack(webpackConfig))
+		.pipe(gulp.dest('./dist'));
+	});
+
 	gulp.task('default',['browserify']);
 
 	gulp.task('server',['browserify','connect','watch']);
 
-	gulp.task('build',['browserify','copy']);
+	gulp.task('build',['webpack','copy']);
 
 	gulp.task('server-pro',['build','connect-pro','watch']);

@@ -1,11 +1,13 @@
-var React = require('react');
-var _ = require('lodash');
-var ShowAddButton = require('../components/ShowAddButton');
-var QuestionForm = require('../components/QuestionForm');
-var QuestionList = require('./QuestionList');
+import React,{Component} from 'react';
+import ShowAddButton from '../components/ShowAddButton';
+import QuestionForm from '../components/QuestionForm';
+import QuestionList from './QuestionList';
+import _ from 'lodash';
 
-module.exports = React.createClass({
-	getInitialState:function(){
+
+class QuestionApp extends Component{
+	constructor(){
+		
 		var questions = [
 			{
 				id:1,
@@ -27,17 +29,18 @@ module.exports = React.createClass({
 			}
 		];
 
-		return {
+		super();
+		this.state = {
 			questions : questions,
 			formDisplay:false
-		}
-	},
-	onToggleForm : function(){
+		};
+	}
+	onToggleForm(){
 		this.setState({
 			formDisplay:!this.state.formDisplay
 		})
-	},
-	onNewQuestion : function(newQuestion){
+	}
+	onNewQuestion(newQuestion){
 		newQuestion.id = this.state.questions.length + 1;
 
 		var newQuestions = this.state.questions.concat( newQuestion );
@@ -47,8 +50,8 @@ module.exports = React.createClass({
 		this.setState({
 			questions: newQuestions,
 		});
-	},
-	onVote:function(key,newCount){
+	}
+	onVote(key,newCount){
 		var questions = _.uniq(this.state.questions);
 		var index = _.findIndex(questions,function(q){
 			return q.id == key;
@@ -62,14 +65,18 @@ module.exports = React.createClass({
 			questions: questions,
 		});
 
-	},
-	sortQuestion:function(questions){
+	}
+	sortQuestion(questions){
 		questions.sort(function(a,b){
 			return b.voteCount - a.voteCount
 		});
 		return questions
-	},
-	render:function(){
+	}
+	render(){
+		this.onToggleForm = this.onToggleForm.bind(this);
+		this.onNewQuestion = this.onNewQuestion.bind(this);
+		this.onVote = this.onVote.bind(this);
+
 		return (
 			<div>
 			  <div className="jumbotron text-center">
@@ -90,4 +97,6 @@ module.exports = React.createClass({
 			</div>
 		)
 	}
-})
+}
+
+export default QuestionApp;

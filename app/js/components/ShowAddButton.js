@@ -1,10 +1,11 @@
-var React = require('react');
+import React,{Component} from 'react';
 
-module.exports = React.createClass({
-	render:function(){
+class ShowAddButton extends Component{
+	render(){
 		return (
 			<button id="add-question-btn" onClick={this.props.onToggleForm} className="btn btn-success">添加问题</button>
 		)
 	}
-});
+}
 
+export default ShowAddButton;
