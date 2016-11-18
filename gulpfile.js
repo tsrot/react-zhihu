@@ -33,26 +33,22 @@ var gulp = require('gulp'),
 		.pipe(connect.reload())
 	});
 
+	gulp.task('css',function(){
+		gulp.src('./app/**/*.css')
+		.pipe(connect.reload())
+	});
+
 	gulp.task('clean',function(){
 		return gulp.src('dist/**/*')
 		.pipe(clean({force:true}));
 	});
 
-	gulp.task('copy',function(){
-		gulp.src('./app/css/*')
-		.pipe(gulp.dest('./dist/css'));
-
-		gulp.src('./bower_components/**/*')
-		.pipe(gulp.dest('./dist/libs'));
-
-		gulp.src('./*.html')
-		.pipe(gulp.dest('./dist'));
-	});
 
 	gulp.task('watch',function(){
 		gulp.watch('./dist/**/*.js',['js']);
 		gulp.watch('./app/**/*.html',['html']);
-		gulp.watch('./app/**/*.js',['browserify']);
+		gulp.watch('./app/**/*.css',['css']);
+		gulp.watch('./app/**/*.js',['webpack']);
 	});
 
 	gulp.task('webpack',['clean'],function(){
@@ -62,10 +58,6 @@ var gulp = require('gulp'),
 		.pipe(gulp.dest('./dist'));
 	});
 
-	gulp.task('default',['browserify']);
+	gulp.task('default',['webpack']);
 
-	gulp.task('server',['browserify','connect','watch']);
-
-	gulp.task('build',['webpack','copy']);
-
-	gulp.task('server-pro',['build','connect-pro','watch']);
+	gulp.task('server',['webpack','connect-pro','watch']);

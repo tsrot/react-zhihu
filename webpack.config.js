@@ -10,7 +10,7 @@ module.exports = {
 	output:{
 		filename: 'js/[name].js',
     	path: __dirname,
-    	publicPath: "http://127.0.0.1:8080/", //服务器IP和端口
+    	publicPath: "http://127.0.0.1:5000/", //服务器IP和端口
 	},
 	module:{
 		loaders:[{
