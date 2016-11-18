@@ -129,6 +129,6 @@ gulp.task('deploy', function() {
 ## 后续
 
 将在分支中更新使用下列技术的版本
-- webpack
-- webpack + redux
-- webkack + redux + react-router
+- webpack + es6
+- webpack + es6 + redux
+- webkack + es6 + redux + react-router
