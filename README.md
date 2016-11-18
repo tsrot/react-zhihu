@@ -137,7 +137,7 @@ $ npm install --save bootstrap
 ```javascript
 $ npm install --save-dev webpack-stream vinyl-named gulp-clean
 ```
-3、安装plugin和webpack loader
+3、安装webpack plugin和webpack loader
 ```javascript
 $ npm install --save-dev html-webpack-plugin extract-text-webpack-plugin babel-core babel-loader babel-preset-es2015 babel-preset-react style-loader css-loader postcss-loader autoprefixer file-loader
 ```
