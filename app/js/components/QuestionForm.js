@@ -1,7 +1,7 @@
-var React = require('react');
+import React,{Component} from 'react';
 
-module.exports = React.createClass({
-	submitHandle:function(e){
+class QuestionFrom extends Component{
+	submitHandle(e){
 		e.preventDefault();
 		if(!this.refs.title.value) return ;
 		
@@ -14,8 +14,10 @@ module.exports = React.createClass({
 		this.refs.addQuestionForm.reset();
 
 		this.props.onNewQuestion( newQuestion );
-	},
-	render:function(){
+	}
+	render(){
+		this.submitHandle = this.submitHandle.bind(this);
+		
 		var styleObj = {
 			display : this.props.formDisplay ? 'block':'none'
 		};
@@ -31,4 +33,6 @@ module.exports = React.createClass({
 	        </form>
 		)
 	}
-});
+}
+
+export default QuestionFrom;

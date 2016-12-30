@@ -1,8 +1,12 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var QuestionApp = require('./containers/QuestionApp');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import QuestionApp from './containers/QuestionApp';
 
-var mainCom = ReactDOM.render(
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/index.css';
+
+
+ReactDOM.render(
 	<QuestionApp />,
 	document.getElementById('app')
 );

@@ -1,14 +1,8 @@
-var React = require('react');
-var QuestionItem = require('../components/QuestionItem');
+import React,{Component} from 'react';
+import QuestionItem from '../components/QuestionItem';
 
-module.exports = React.createClass({
-	// getInitialState:function(){
-	// 	return {
-	// 		onVote:this.props.onVote,
-	// 	}
-	// },
-
-	render:function(){
+class QuestionList extends Component{
+	render(){
 		var onVote = this.props.onVote;
 		var questions = this.props.questions;
 		if(!Array.isArray(questions)) throw new Error('this.props.questions必需是数组！');
@@ -31,4 +25,6 @@ module.exports = React.createClass({
 		    </div>
 		)
 	}
-});
+}
+
+export default QuestionList;

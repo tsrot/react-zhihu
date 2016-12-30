@@ -1,21 +1,23 @@
 var gulp = require('gulp'),
 	connect = require('gulp-connect'),
-	browserify = require('gulp-browserify'),
-	concat = require('gulp-concat'),
+	webpack = require('webpack-stream'),
+	named = require('vinyl-named'),
+	clean = require('gulp-clean'),
+	webpackConfig = require('./webpack.config.js'),
 
 	port = process.env.port || 5000 ;
-
-	gulp.task('browserify',function(){
-		gulp.src('./app/js/main.js')
-		.pipe(browserify({
-			transform:'reactify',
-		}))
-		.pipe(gulp.dest('./dist/js'))
-	});
 
 	gulp.task('connect',function(){
 		connect.server({
 			root:'./',
+			port:port,
+			livereload:true,
+		})
+	});
+
+	gulp.task('connect-pro',function(){
+		connect.server({
+			root:'./dist',
 			port:port,
 			livereload:true,
 		})
@@ -31,12 +33,31 @@ var gulp = require('gulp'),
 		.pipe(connect.reload())
 	});
 
+	gulp.task('css',function(){
+		gulp.src('./app/**/*.css')
+		.pipe(connect.reload())
+	});
+
+	gulp.task('clean',function(){
+		return gulp.src('dist/**/*')
+		.pipe(clean({force:true}));
+	});
+
+
 	gulp.task('watch',function(){
 		gulp.watch('./dist/**/*.js',['js']);
 		gulp.watch('./app/**/*.html',['html']);
-		gulp.watch('./app/**/*.js',['browserify']);
+		gulp.watch('./app/**/*.css',['css']);
+		gulp.watch('./app/**/*.js',['webpack']);
 	});
 
-	gulp.task('default',['browserify']);
+	gulp.task('webpack',['clean'],function(){
+		return gulp.src('./app/js/*.js')
+		.pipe(named())
+		.pipe(webpack(webpackConfig))
+		.pipe(gulp.dest('./dist'));
+	});
 
-	gulp.task('server',['browserify','connect','watch']);
+	gulp.task('default',['webpack']);
+
+	gulp.task('server',['webpack','connect-pro','watch']);

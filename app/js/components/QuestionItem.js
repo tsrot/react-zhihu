@@ -1,15 +1,20 @@
-var React = require('react');
+import React,{Component} from 'react';
 
-module.exports = React.createClass({
-	voteUp:function(e){
+class QuestionItem extends Component{
+	voteUp(e){
 		var newCount = parseInt(this.props.voteCount + 1);
 		this.props.onVote( this.props.questionKey, newCount );
-	},
-	voteDown:function(e){
+	}
+
+	voteDown(e){
 		var newCount = parseInt(this.props.voteCount - 1);
 		this.props.onVote( this.props.questionKey, newCount );
-	},
-	render:function(){
+	}
+
+	render(){
+		this.voteUp = this.voteUp.bind(this);
+		this.voteDown = this.voteDown.bind(this);
+		
 		return (
 			<div className="media">
 	            <div className="media-left">
@@ -28,4 +33,6 @@ module.exports = React.createClass({
 	        </div>
 		)
 	}
-});
+}
+
+export default QuestionItem;
