@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	browserify = require('gulp-browserify'),
 	concat = require('gulp-concat'),
+	ghPages = require('gulp-gh-pages'),
 
 	port = process.env.port || 5000 ;
 
@@ -54,6 +55,11 @@ var gulp = require('gulp'),
 		gulp.watch('./dist/**/*.js',['js']);
 		gulp.watch('./app/**/*.html',['html']);
 		gulp.watch('./app/**/*.js',['browserify']);
+	});
+
+	gulp.task('deploy', function() {
+	  return gulp.src('./dist/**/*')
+	    .pipe(ghPages());
 	});
 
 	gulp.task('default',['browserify']);
