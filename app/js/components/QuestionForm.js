@@ -27,7 +27,7 @@ module.exports = React.createClass({
 	          </div>
 	          <textarea ref="description" className="form-control" rows="3" placeholder="问题的描述"></textarea>
 	          <button className="btn btn-success pull-right">确认</button>
-	          <button className="btn btn-default pull-right" onClick={this.props.onToggleForm}>取消</button>
+	          <button type="button" className="btn btn-default pull-right" onClick={this.props.onToggleForm}>取消</button>
 	        </form>
 		)
 	}
