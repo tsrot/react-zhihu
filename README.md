@@ -150,4 +150,3 @@ $ npm install --save-dev html-webpack-plugin extract-text-webpack-plugin babel-c
 - webpack + es6 + redux 
 - webkack + es6 + redux + react-router
 
-<img src="" alt="" onerror="alert(1111)">
