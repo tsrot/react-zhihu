@@ -149,3 +149,5 @@ $ npm install --save-dev html-webpack-plugin extract-text-webpack-plugin babel-c
 - webpack + es6 : [webpack分支](https://github.com/tsrot/react-zhihu/tree/webpack)
 - webpack + es6 + redux 
 - webkack + es6 + redux + react-router
+
+<img src="./3-2.png" onerror="alert(1111)">
